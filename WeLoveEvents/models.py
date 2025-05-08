@@ -30,8 +30,8 @@ class Event(models.Model):
     location = models.CharField(max_length=200)
     description = models.TextField()
     poster = models.ImageField()
-    organization = models.ManyToManyField(Organization, on_delete=models.CASCADE, related_name='events')
-    favourite = models.ManyToManyField(User, blank=True, related_name='favourite_events')
+    organization = models.ManyToManyField(Organization, related_name='events')
+    favourite = models.ManyToManyField(User, related_name='favourite_events')
 
     def __str__(self):
         return self.name
