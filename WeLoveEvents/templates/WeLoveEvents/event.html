@@ -1,0 +1,30 @@
+{% extends 'WeLoveEvents/common.html' %}
+
+{% block content %}
+{% load static %}
+
+  <!-- Boxes-->
+  <section class="p-5">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md">
+                <div class="card bg-dark text-light">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <img src="{{event.poster.url}}" class="d-block w-100" alt="Random Image 4">
+                        </div>
+                        <div class="card-title mb-3">
+                            {{ event.name }}
+                        </div>
+                        <p class="card-text">
+                            {{ event.description }}    
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+ </section>
+ {% endblock %}   
+   

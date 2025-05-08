@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <!--name="viewport" necessary for mobile adaptation-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: change title  and add icon -->
+    <title>Events</title>
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=23027&format=png&color=000000" type="image/png">
+     <!-- CSS-->
+     <link rel="stylesheet" href="{% static 'WeLoveEvents/style.css' %}" type="text/css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="style.css" type="text/css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+</head>
+<body>
+
+    <!-- navbar expand is for responsiveness and it expands on large in this example-->
+    <!--TODO: change color of the navbar -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top py-3">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">
+                <!-- TODO: change logo -->
+                <img src="{%static 'WeLoveEvents/logo.png'%}" alt="Logo" style="width: 30px;">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <!-- ms is for margin start auto and in this example pushes the li elements to the right-->
+                 <!-- TODO: remove ms-auto if you want to change columns -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Eventi
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Evento 1</a></li>
+                          <li><a class="dropdown-item" href="#">Evento 2</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Evento n</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Località
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Città 1</a></li>
+                          <li><a class="dropdown-item" href="#">Città 2</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Città n</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> <i class="bi bi-heart h3 "></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <img src="https://img.icons8.com/?size=100&id=WmOfu4e7Rvp7&format=png&color=000000"  alt="Language" style="height: 30px;">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- TODO: add icon moon fill when in dark mode-->
+                        <a href="#" class="nav-link"> <i class="bi bi-moon h3"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#FAQ" class="nav-link"> <i class="bi bi-question-lg h3"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> <i class="bi bi-person h3"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+    <div class="container">
+        <p class="lead">Copyright &copy; 2025 Events website</p>
+        <a href="#" class="position-absolute bottom-0 end-0 p-5">
+            <i class="bi bi-arrow-up-circle h2"></i>
+        </a>
+    </div>
+
+</footer>
+
+    <!-- JS-Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
