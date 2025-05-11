@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from .models import Event
+from .models import Event, Organization, User
 from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
 def index(request):
     events = Event.objects.all()
-    return render(request, 'WeLoveEvents/index.html', {'events': events})
+    partners = Organization.objects.all()
+    return render(request, 'WeLoveEvents/index.html', {'events': events, 'partners': partners})
 
 def event(request, id):
     event = get_object_or_404(Event, id=id)

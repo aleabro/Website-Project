@@ -10,3 +10,8 @@
         transform: translateX(-50%);
       }
     }
+
+    .partner-logo {
+  max-height: 50px;    /* limitiamo l'altezza */
+  object-fit: contain;
+}

@@ -87,19 +87,10 @@
       <div class="d-flex overflow-hidden">
         <div class="d-flex align-items-center animate-scroll gap-5">
           <!-- Logos -->
-          <img src="https://img.logoipsum.com/288.svg" alt="Logo 1">
-          <img src="https://img.logoipsum.com/371.svg" alt="Logo 2">
-          <img src="https://img.logoipsum.com/370.svg" alt="Logo 3">
-          <img src="https://img.logoipsum.com/368.svg" alt="Logo 4">
-          <img src="https://img.logoipsum.com/363.svg" alt="Logo 5">
-          <img src="https://img.logoipsum.com/359.svg" alt="Logo 6">
-          <!-- Ripetizione per simulare lo scorrimento infinito -->
-          <img src="https://img.logoipsum.com/288.svg" alt="Logo 1">
-          <img src="https://img.logoipsum.com/371.svg" alt="Logo 2">
-          <img src="https://img.logoipsum.com/370.svg" alt="Logo 3">
-          <img src="https://img.logoipsum.com/368.svg" alt="Logo 4">
-          <img src="https://img.logoipsum.com/363.svg" alt="Logo 5">
-          <img src="https://img.logoipsum.com/359.svg" alt="Logo 6">
+           {%for partner in partners %}
+          <img src="{{ partner.logo.url }}" class="partner-logo" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ partner.name }}">
+
+            {% endfor %}
         </div>
       </div>
     </div>
