@@ -14,6 +14,8 @@ class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     image = models.ImageField(upload_to="event_images/")
+    #TODO: add a video field
+    #video = models.FileField(upload_to="event_videos/", blank=True, null=True)
     date = models.DateTimeField("event date")
     location = models.CharField(max_length=300)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -32,4 +34,6 @@ class Event(models.Model):
     )
     def is_upcoming(self):
         return self.date >= timezone.now()
+    
+    
     
