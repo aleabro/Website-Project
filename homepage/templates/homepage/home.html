@@ -1,7 +1,6 @@
-{% extends 'WeLoveEvents/common.html' %}
-
-{% block content %}
+{% extends 'homepage/base.html' %}
 {% load static %}
+{% block content %}
     <!--Newsletter-->
     <section class="bg-primary text-light py-2">
         <div class="container">
@@ -53,7 +52,8 @@
     </div>
   </div>
   
-  <!-- Boxes-->
+
+  <!-- Cards -->
   <section class="p-5">
     <div class="container">
         <div class="row text-center g-4">
@@ -62,15 +62,17 @@
                 <div class="card bg-dark text-light">
                     <div class="card-body text-center">
                         <div class="h1 mb-3">
-                            <img src="{{event.poster.url}}" class="d-block w-100" alt="Random Image 4">
+                            <img src="{{event.image.url}}" class="d-block w-100" alt="{{ event.title }}" style="height: 200px; object-fit: cover;">
                         </div>
                         <div class="card-title mb-3">
-                            {{ event.name }}
+                            <h3>{{ event.title }}</h3>
                         </div>
+                        <div class="card-subtitle mb-2">
+                            <p>{{ event.date |date:"F j, Y"}} | {{ event.organizer }} </p></div>
                         <p class="card-text">
                             {{ event.description }}    
                         </p>
-                        <a href="{% url 'events:event' id=event.id %} " class="btn btn-primary">Read More</a>
+                        <a href="#" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
@@ -87,10 +89,19 @@
       <div class="d-flex overflow-hidden">
         <div class="d-flex align-items-center animate-scroll gap-5">
           <!-- Logos -->
-           {%for partner in partners %}
-          <img src="{{ partner.logo.url }}" class="partner-logo" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ partner.name }}">
-
-            {% endfor %}
+          <img src="https://img.logoipsum.com/288.svg" alt="Logo 1">
+          <img src="https://img.logoipsum.com/371.svg" alt="Logo 2">
+          <img src="https://img.logoipsum.com/370.svg" alt="Logo 3">
+          <img src="https://img.logoipsum.com/368.svg" alt="Logo 4">
+          <img src="https://img.logoipsum.com/363.svg" alt="Logo 5">
+          <img src="https://img.logoipsum.com/359.svg" alt="Logo 6">
+          <!-- Ripetizione per simulare lo scorrimento infinito -->
+          <img src="https://img.logoipsum.com/288.svg" alt="Logo 1">
+          <img src="https://img.logoipsum.com/371.svg" alt="Logo 2">
+          <img src="https://img.logoipsum.com/370.svg" alt="Logo 3">
+          <img src="https://img.logoipsum.com/368.svg" alt="Logo 4">
+          <img src="https://img.logoipsum.com/363.svg" alt="Logo 5">
+          <img src="https://img.logoipsum.com/359.svg" alt="Logo 6">
         </div>
       </div>
     </div>
@@ -166,5 +177,7 @@
                 </div>
             </div>
         </div>
-     </section>   
- {% endblock %}   
+     </section>
+
+{% endblock %}
+
