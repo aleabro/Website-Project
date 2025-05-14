@@ -1,0 +1,17 @@
+  .animate-scroll {
+      animation: scroll-left 30s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .partner-logo {
+  max-height: 50px;    
+  object-fit: contain;
+}

@@ -1,0 +1,21 @@
+{% extends "homepage/base.html" %}
+
+{% block title %}Choose Account Type{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2>Create Your Account</h2>
+            <p class="lead">Are you looking to host events or attend them?</p>
+            <div class="d-grid gap-3 d-md-flex justify-content-md-center mt-4">
+                <a href="{% url 'accounts:regular_user_signup' %}" class="btn btn-primary btn-lg px-4">I want to Attend Events</a>
+                <a href="{% url 'accounts:organization_signup' %}" class="btn btn-success btn-lg px-4">I want to Host Events (Organization)</a>
+            </div>
+             <p class="mt-4">
+                Already have an account? <a href="{% url 'accounts:login' %}">Login here</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
