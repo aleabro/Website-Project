@@ -39,10 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'WeLoveEvents.apps.WeloveeventsConfig',
     'accounts.apps.AccountsConfig',
     'notifications.apps.NotificationsConfig',
-    'favorites.apps.FavoritesConfig',
     'events.apps.EventsConfig',
     'homepage.apps.HomepageConfig',
 ]

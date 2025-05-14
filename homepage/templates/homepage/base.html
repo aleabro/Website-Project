@@ -19,8 +19,8 @@
     <!-- navbar expand is for responsiveness and it expands on large in this example-->
     <!--TODO: change color of the navbar -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top py-3">
-        <div class="container-fluid">
-            <a href="#" class="navbar-brand">
+        <div class="container">
+            <a href="{% url 'homepage:home' %}" class="navbar-brand">
                 <!-- TODO: change logo -->
                 <img src="{%static 'WeLoveEvents/logo.png'%}" alt="Logo" style="width: 30px;">
             </a>
@@ -33,6 +33,11 @@
                 <!-- ms is for margin start auto and in this example pushes the li elements to the right-->
                  <!-- TODO: remove ms-auto if you want to change columns -->
                 <ul class="navbar-nav ms-auto">
+                    <!-- TODO: handle searcbar -->
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                     <li class="nav-item">
                         <a href="{% url 'homepage:home' %}" class="nav-link">Home</a>
                     </li>
@@ -57,11 +62,16 @@
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="#">Città n</a></li>
                         </ul>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"> <i class="bi bi-heart h3 "></i> </a>
                     </li>
+                    {% if user.is_authenticated %}
+                    
+                    <li class="nav-item">
+                        <a href="{% url 'events:favorite_list' %}" class="nav-link"> <i class="bi bi-heart h3 "></i> </a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
+                            <!-- TODO: add language support -->
                             <img src="https://img.icons8.com/?size=100&id=WmOfu4e7Rvp7&format=png&color=000000"  alt="Language" style="height: 30px;">
                         </a>
                     </li>
@@ -72,9 +82,28 @@
                     <li class="nav-item">
                         <a href="#FAQ" class="nav-link"> <i class="bi bi-question-lg h3"></i> </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"> <i class="bi bi-person h3"></i> </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi bi-person h3"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% if not user.is_authenticated %}
+                          <li><a class="dropdown-item" href="{% url 'accounts:login' %}">Login</a></li>
+                          <li><a class="dropdown-item" href="{% url 'accounts:signup_choice' %}">Sign Up</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                            {% else %}
+                          <li><a class="dropdown-item" href="#">Your profile</a></li>
+                            {% if user.type == organization %} <!-- Check if the user is an organization -->
+                            <li><a class="dropdown-item" href="{% url 'events:organization_dashboard' %}">Your Events</a></li>
+                                {% else %}
+                            <li><a class="dropdown-item" href="{% url 'events:favorite_list' %}">Your Favorites</a></li>
+                                {% endif %}
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+                            {% endif %}
+                        </ul>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -84,13 +113,91 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="p-5 bg-dark text-white text-center position-relative">
-    <div class="container">
-        <p class="lead">Copyright &copy; 2025 Events website</p>
-        <a href="#" class="position-absolute bottom-0 end-0 p-5">
-            <i class="bi bi-arrow-up-circle h2"></i>
-        </a>
+<footer class="p-5 bg-dark text-white text-center position-relative">
+  <div class="container">
+    <!-- Footer Sections -->
+    <div class="row">
+      <!-- Left Column: Social Media and Website Name -->
+      <div class="col-md-4 mb-4">
+        <!-- Social Media Icons -->
+        <div class="mb-3">
+          <a href="https://www.facebook.com" target="_blank" class="text-white me-3">
+            <i class="bi bi-facebook fs-4"></i>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" class="text-white me-3">
+            <i class="bi bi-instagram fs-4"></i>
+          </a>
+          <a href="https://www.twitter.com" target="_blank" class="text-white me-3">
+            <i class="bi bi-twitter fs-4"></i>
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" class="text-white me-3">
+            <i class="bi bi-linkedin fs-4"></i>
+          </a>
+          <a href="https://www.youtube.com" target="_blank" class="text-white">
+            <i class="bi bi-youtube fs-4"></i>
+          </a>
+        </div>
+
+        <!-- Website Name -->
+        <p class="lead">Events Website</p>
+      </div>
+
+      <!-- Right Column: Information Sections -->
+      <div class="col-md-8 mb-4">
+        <div class="row">
+          <!-- About Section -->
+          <div class="col-md-3">
+            <h5>About Us</h5>
+            <p>Learn more about our events and how we bring people together.</p>
+          </div>
+
+          <!-- Categories Section -->
+          <div class="col-md-3">
+            <h5>Categories</h5>
+            <ul class="list-unstyled">
+              <li>Music</li>
+              <li>Sports</li>
+              <li>Conferences</li>
+              <li>Workshops</li>
+            </ul>
+          </div>
+
+          <!-- Support Section -->
+          <div class="col-md-3">
+            <h5>Support</h5>
+            <ul class="list-unstyled">
+              <li>FAQ</li>
+              <li>Contact Us</li>
+              <li>Help Center</li>
+              <li>Privacy Policy</li>
+            </ul>
+          </div>
+
+          <!-- Recent Events Section -->
+          <div class="col-md-3">
+            <h5>Recent Events</h5>
+            <ul class="list-unstyled">
+              <li>Summer Music Festival</li>
+              <li>Tech Conference 2025</li>
+              <li>Charity Sports Event</li>
+              <li>Photography Workshop</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Copyright -->
+    <p class="mb-0">Copyright &copy; 2025 Events Website</p>
+
+    <!-- Scroll to Top -->
+    <a href="#" class="position-absolute bottom-0 end-0 p-4 text-white">
+      <i class="bi bi-arrow-up-circle-fill fs-3"></i>
+    </a>
+  </div>
+</footer>
+
+
 
 </footer>
 

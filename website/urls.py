@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('homepage.urls')),
     path('events/', include('events.urls')),
-    path('WeLoveEvents/', include('WeLoveEvents.urls')), 
+    path('accounts/', include('accounts.urls')),
 ]
 
 if settings.DEBUG:

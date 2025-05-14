@@ -1,0 +1,7 @@
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <button type="submit" name="update">Salva modifiche</button>
+  <button type="submit" name="delete" onclick="return confirm('Sei sicuro di voler eliminare questo evento?')">Elimina evento</button>
+</form>
