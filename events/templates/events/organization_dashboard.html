@@ -20,6 +20,7 @@
             <small class="text-muted">Location: {{ event.location }}</small>
             <div class="mt-2">
                 <a href="{% url 'events:event_update' event.pk %}" class="btn btn-sm btn-outline-secondary me-2">Edit</a>
+                <!-- TODO: handle delete events -->
                 <a href="{% url 'events:event_confirm_delete' event.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
             </div>
         </div>

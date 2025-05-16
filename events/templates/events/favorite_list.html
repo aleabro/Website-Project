@@ -10,15 +10,16 @@
         {% for item in favorite_items %}
             <div class="list-group-item list-group-item-action mb-2 shadow-sm">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><a href="{% url 'event_detail' item.event.pk %}">{{ item.event.title }}</a></h5>
+                    <h5 class="mb-1"><a href="{% url 'events:details' item.event.pk %}">{{ item.event.title }}</a></h5>
                     <small class="text-muted">Favorited on: {{ item.favorited_at|date:"M d, Y" }}</small>
                 </div>
                 <p class="mb-1"><strong>Event Date:</strong> {{ item.event.date|date:"D, M d, Y, P" }}</p>
                 <p class="mb-1"><strong>Location:</strong> {{ item.event.location }}</p>
                 <p class="mb-1">{{ item.event.description|truncatewords:20 }}</p>
                 <div class="mt-2">
-                    <a href="{% url 'event_detail' item.event.pk %}" class="btn btn-sm btn-outline-info me-2">View Details</a>
-                    <a href="{% url 'remove_from_favorites' item.event.id %}" class="btn btn-sm btn-outline-warning">Remove from Favorites</a>
+                    <a href="{% url 'events:details' item.event.pk %}" class="btn btn-sm btn-outline-info me-2">View Details</a>
+                    <!-- TODO: add remove from favorites -->
+                  <a href="#" class="btn btn-sm btn-outline-warning">Remove from Favorites</a>
                 </div>
             </div>
         {% endfor %}
